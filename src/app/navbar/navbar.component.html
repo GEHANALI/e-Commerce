@@ -1,0 +1,56 @@
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fa-solid fa-cart-shopping clearfix text-success me-2"></i>FreshCart</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul *ngIf="islogin"  class="navbar-nav m-auto mt-2 mt-lg-0">
+          
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="text-success" routerLink="home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="text-success" routerLink="category">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="text-success" routerLink="brand">Brands</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="text-success" routerLink="product">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="text-success" routerLink="wish">Wishlist</a>
+          </li>
+          <li   class="nav-item">
+            <a class="nav-link" routerLinkActive="text-success" routerLink="mycart">Cart</a>
+          </li>
+          <li *ngIf="islogin"  class="position-relative nav-item">
+            <a class="nav-link" routerLinkActive="text-success" routerLink="mycart">
+         <i class="fas fa-cart-shopping text-main fa-lg"></i>
+          <span class="badge bg-main text-light position-absolute top-0 end-0" >{{cartNumber}}</span>
+            </a>
+            </li>
+        </ul>
+ 
+          
+        <div class="form-inline ms-auto my-3 my-lg-0">
+
+
+            <i class="fab fa-facebook px-1"></i>
+            <i class="fab fa-twitter px-1"></i>
+            <i class="fab fa-instagram px-1"></i>
+            <i class="fab fa-behance px-1"></i>
+            <i class="fab fa-youtube px-1"></i>
+
+          
+            <a   *ngIf="!islogin" class="nav-link d-inline-block px-2"routerLink="signin">Login</a>
+            <a    *ngIf="!islogin" class="nav-link d-inline-block px-2"routerLink="signup">Register</a>
+            
+            <a *ngIf="islogin"  (click)="logOut()" class="nav-link d-inline-block px-2 cursor-pointer">Logout</a>
+            </div>
+      </div>
+    </div>
+  </nav>

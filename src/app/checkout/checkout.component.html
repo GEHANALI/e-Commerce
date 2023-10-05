@@ -1,0 +1,16 @@
+
+
+<div class="my-5 mx-5">
+<form  [formGroup]="payment" (ngSubmit)="onlinePayment(payment)">
+    <label class="mt-5">details</label>
+    <input type="text" class="form-control" formControlName="details">
+    <label class="mt-5">phone</label>
+    <input type="tel" class="form-control" formControlName="phone">
+    <label class="mt-5" >city</label>
+    <input type="text" class="form-control" formControlName="city">
+    <button class="btn btn-success text-light my-3" type="submit" [disabled]="payment.invalid">
+        Pay
+       </button>
+</form>
+
+</div>

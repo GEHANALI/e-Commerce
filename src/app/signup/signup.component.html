@@ -1,0 +1,71 @@
+<div class="my-5 mx-5">
+    <h2>Register Form :</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="signup(registerForm)">
+        <h2 *ngIf="errorM.length > 0" class="alert alert-danger">{{errorM}}</h2>
+        <div class="mb-3">
+            <label for="">name</label>
+            <input  [class.is-invalid]="registerForm.get('name')?.errors&&registerForm.get('name')?.touched"
+            [class.is-valid]="registerForm.get('name')?.errors == null"
+             formControlName="name" type="text" class="form-control">
+            <div *ngIf="registerForm.get('name')?.errors&&registerForm.get('name')?.touched" class="alert alert-danger">
+                <p *ngIf="registerForm.get('name')?.getError('required')">required input</p>
+                <p *ngIf="registerForm.get('name')?.getError('minlength')">min Length is 3</p>
+                <p *ngIf="registerForm.get('name')?.getError('maxlength')">max length is 15</p>
+
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="">email</label>
+            <input  [class.is-invalid]="registerForm.get('email')?.errors&&registerForm.get('email')?.touched"
+            [class.is-valid]="registerForm.get('email')?.errors == null"
+            formControlName="email" type="email" class="form-control">
+            <div *ngIf="registerForm.get('email')?.errors&&registerForm.get('email')?.touched" class="alert alert-danger">
+                <p *ngIf="registerForm.get('email')?.getError('required')">required input</p>
+                <p *ngIf="registerForm.get('email')?.getError('email')">enter a valid email</p>
+
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="">password</label>
+            <input [class.is-invalid]="registerForm.get('password')?.errors&&registerForm.get('password')?.touched"
+            [class.is-valid]="registerForm.get('password')?.errors == null"
+            formControlName="password" type="password" class="form-control">
+            <div *ngIf="registerForm.get('password')?.errors&&registerForm.get('password')?.touched" class="alert alert-danger">
+                <p *ngIf="registerForm.get('password')?.getError('required')">required input</p>
+                <p *ngIf="registerForm.get('password')?.getError('pattern')">enter a valid password</p>
+
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="">repassword</label>
+            <input  [class.is-invalid]="registerForm.get('rePassword')?.errors&&registerForm.get('rePassword')?.touched"
+            [class.is-valid]="registerForm.get('rePassword')?.errors == null"
+            formControlName="rePassword" type="password" class="form-control">
+            <div *ngIf="registerForm.get('rePassword')?.errors&&registerForm.get('rePassword')?.touched" class="alert alert-danger">
+                <p *ngIf="registerForm.get('rePassword')?.getError('required')">required input</p>
+                <p *ngIf="registerForm.get('rePassword')?.getError('repasswordMatch')">Not matching the password</p>
+
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="">phone</label>
+            <input  [class.is-invalid]="registerForm.get('phone')?.errors&&registerForm.get('phone')?.touched"
+            [class.is-valid]="registerForm.get('phone')?.errors == null"
+            formControlName="phone" type="tel" class="form-control">
+            <div *ngIf="registerForm.get('phone')?.errors&&registerForm.get('phone')?.touched" class="alert alert-danger">
+                <p *ngIf="registerForm.get('phone')?.getError('required')">required input</p>
+                <p *ngIf="registerForm.get('phone')?.getError('pattern')">enter a valid phone number</p>
+
+            </div>
+        </div>
+        <button class="btn btn-success" type="submit" [disabled]="registerForm.invalid">
+            <span *ngIf="loading">
+                <i class="fa-solid fa-spinner fa-spin"></i>
+                Loading.....</span>
+            register</button>
+    </form>
+</div>

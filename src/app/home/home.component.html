@@ -1,0 +1,63 @@
+<app-mainslider></app-mainslider>
+
+<div class="my-3 categories mt-5 ">
+    <h2 class="text-center mb-3">Shop Popular <span class="text-main">Categories</span></h2>
+    <div class="row">
+      
+        <owl-carousel-o [options]="customOptions">
+      
+          <ng-container *ngFor="let slide of categoryD">
+            <ng-template carouselSlide [id]="slide.id">
+              <img [src]="slide.image" class="w-100 img col-md-12">
+              <p>{{slide.name}}</p>
+            </ng-template>
+          </ng-container>
+      
+        </owl-carousel-o>
+    </div>
+</div>
+
+
+
+<div class="my-5 brands">
+    <h2 class="text-center mb-4">Shop Popular <span class="text-main">Brands</span></h2>
+    <div class="row g-3">
+        <div *ngFor="let data of brandD;let last = last" class="col-md-3">
+            <div class="bg-light rounded border p-5 text-center">
+<img [src]="data.image" class="w-100 " height="100px">
+<h6>{{data.name}}</h6>
+            </div>
+            <div routerLink="/brand" *ngIf="last" class="d-flex justify-content-end my-3">
+                <i class="fa-solid fa-circle-arrow-right text-success fa-2x"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="products">
+    <h2 class=" text-center mb-3">Shop Popular <span class="text-main">Products</span></h2>
+    <input [(ngModel)]="searchValue" class="form-control w-75 m-auto mt-3 mb-3" placeholder="search......">
+    <div class="row">
+        <div *ngFor="let data of productD | search :searchValue" class="col-md-3">
+                <div class="p-3 product text-center">
+                    <a [routerLink]="['/detailsP',data._id]">
+                    <img [src]="data.imageCover" class="w-100 img">
+                    <p class="text-main">{{data.category.name}}</p>
+                    <h6 class="fw-bold">{{data.title.split(' ').slice(0,2).join(' ')}}</h6>
+                    <div class="justify-content-between d-flex">
+                        <span>{{data.price}} EGP</span>
+                        <span><i class="fa-solid fa-star rating-color"></i>{{data.ratingsAverage}}</span>
+                    </div>
+                  
+                </a>
+                <div  (click)="addToWish(data._id)">
+                    <i  class="fa-solid fa-heart" id="heart"></i>
+                </div>
+                    <button (click)="addTocart(data._id)" class="btn bg-main w-100 text-white">Add +</button>
+                  
+           
+            
+                                </div>
+        </div>
+    </div>
+</div>

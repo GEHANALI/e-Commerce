@@ -1,0 +1,28 @@
+<div class="products">
+    <h2 class="text-center my-5">Shop Popular <span class="text-main">Products</span></h2>
+    <input [(ngModel)]="searchValue" class="form-control w-75 m-auto mt-3" placeholder="search......">
+    <div class="row mt-5 mb-3">
+        <div *ngFor="let data of productD | search :searchValue" class="col-md-3">
+                <div class="p-3 product text-center">
+                    <a [routerLink]="['/detailsP',data._id]">
+                    <img [src]="data.imageCover" class="w-100 img">
+                    <p class="text-main">{{data.category.name}}</p>
+                    <h6 class="fw-bold">{{data.title.split(' ').slice(0,2).join(' ')}}</h6>
+                    <div class="justify-content-between d-flex">
+                        <span>{{data.price}} EGP</span>
+                        <span><i class="fa-solid fa-star rating-color"></i>{{data.ratingsAverage}}</span>
+                    </div>
+                   
+                </a>
+                    <button (click)="addTocart(data._id)" class="btn bg-main w-100 text-white">Add +</button>
+                    <i (click)="addToWish(data._id)" class="fa-solid fa-heart"></i>
+                    
+                </div>
+        
+     
+            <!-- <div  routerLink="/product" *ngIf="last" class="d-flex justify-content-end my-3">
+                <i class="fa-solid fa-circle-arrow-right text-success fa-2x"></i>
+            </div> -->
+        </div>
+    </div>
+</div>

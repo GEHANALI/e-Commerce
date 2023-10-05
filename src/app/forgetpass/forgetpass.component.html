@@ -1,0 +1,19 @@
+<div class="forgetpass my-5">
+    <form [formGroup]="forgetForm" class="w-75 mx-auto" (ngSubmit)="forgetpass(forgetForm)">
+        
+        <input formControlName="email" type="email" id="email" class="form-control" placeholder="email">
+        <p class="text-success mt-2" *ngIf="successM.length >0">{{successM}}</p>
+        <p class="text-danger mt-2" *ngIf="errorM.length >0">{{errorM}}</p>
+        <button class="btn bg-main mt-4 text-white"  [disabled]="forgetForm.invalid">Verify</button>
+    </form>
+</div>
+
+
+<div class="verifycode my-5 d-none">
+    <form [formGroup]="verifyForm" class="w-75 mx-auto" (ngSubmit)="verifyCode(verifyForm)">
+        
+        <input formControlName="resetCode" type="email" id="resetcode" class="form-control" placeholder="Reset Code">
+        <p class="text-danger mt-2" *ngIf="errrest.length >0">{{errrest}}</p>
+        <button class="btn bg-main mt-4 text-white"  [disabled]="verifyForm.invalid">Verify</button>
+    </form>
+</div>

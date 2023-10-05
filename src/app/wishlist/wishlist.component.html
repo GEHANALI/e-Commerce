@@ -1,0 +1,19 @@
+<div class="my-5 bg-main-light p-5">
+    <h3>Wish List</h3>
+  
+    <div class=" my-3" *ngFor="let brands of wishDetails?.brands">
+        <div  class="row py-2 border-bottom">
+            <div class="col-md-1">
+                <img [src]="brands.subcategory
+                " [alt]="brands.brand.name" class="w-100">
+            </div>
+            <div class="col-md-11 d-flex justify-content-between">
+                <div>
+                    <h6>{{brands.brand.name}}</h6> 
+                    <button  (click)="removeItem(brands.products._id)"  class="btn btn-outline-danger">
+                        <i class="fa-regular mx-2 fa-trash-can"></i>Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
